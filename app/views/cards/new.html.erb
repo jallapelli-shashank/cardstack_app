@@ -1,0 +1,14 @@
+<section>
+  <div class="container">
+    <%= form_with model: @card, class: "d-flex flex-column gap-3" do |f| %>
+      <%= f.text_field :name, placeholder: "Card name" %>
+      <%= f.text_field :card_number, placeholder: "Card number" %>
+      <%= f.text_field :card_type, placeholder: "Card type" %>
+      <%= f.text_field :bank, placeholder: "Bank" %>
+      <%= f.text_field :expiry_month, placeholder: "Expiry month" %>
+      <%= f.text_field :expiry_year, placeholder: "Expiry year" %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</section>

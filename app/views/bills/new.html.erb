@@ -1,0 +1,10 @@
+<section>
+  <div class="container">
+    <%= form_with model: [@card, @bill], class: "d-flex flex-column gap-3" do |bill| %>
+      <%= bill.text_field :month, placeholder: "Month", autocomplete: "month" %>
+      <%= bill.text_field :year, placeholder: "Year" %>
+      <%= bill.number_field :amount, placeholder: "Amount" %>
+      <%= bill.submit %>
+    <% end %>
+  </div>
+</section>

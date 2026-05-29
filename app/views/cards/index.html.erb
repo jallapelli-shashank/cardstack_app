@@ -1,0 +1,7 @@
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<section>
+  <div class="container">
+    <h1>Cards</h1>
+    <%= render partial: "card", collection: @cards if @cards.length %>  
+  </div>
+</section>

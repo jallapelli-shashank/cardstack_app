@@ -1,0 +1,11 @@
+<% if authenticated? %>
+<nav>
+  <div class="container py-3">
+    <div class="d-flex justify-content-between">
+      <%= current_user[:name] %>
+      <%= link_to "Add new card", new_card_path, class: "btn btn-primary btn-sm" %>
+      <%= button_to "Sign Out", session_path, method: :delete, class: "btn btn-danger btn-sm"  %>
+    </div>
+  </div>
+</nav>
+<% end %>

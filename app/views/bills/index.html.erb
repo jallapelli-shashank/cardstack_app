@@ -1,0 +1,8 @@
+<section>
+  <div class="container">
+    <%= render partial: "bill", collection: @bills %>
+    <div>
+      <%= link_to "Go Back", card_path(params[:card_id]), class: "btn btn-info btn-sm" %>
+    </div>
+  </div>
+<section>
