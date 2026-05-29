@@ -1,0 +1,16 @@
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<section class="py-5">
+  <div class="container">
+    <%= form_with model: @user, url: registrations_path, class: "d-flex flex-column gap-3" do |form| %>
+      <%= form.text_field :name, required: true, placeholder: "Enter your name" %><br>
+      <%= form.email_field :email_address, required: true, placeholder: "Enter your email address" %><br>
+      <%= form.password_field :password, required: true, placeholder: "Enter your password", maxlength: 72 %><br>
+      <%= form.submit "Sign Up" %>
+    <% end %>
+
+    <div class="mt-4">
+      Already have a account? <%= link_to "Sign in", new_session_path %>
+    </div>
+  </div>
+</section>
