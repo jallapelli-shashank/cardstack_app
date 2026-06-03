@@ -1,0 +1,12 @@
+<section class="container">
+  <div class="container">
+    ==============Bill================
+    <p>Month: <%= @bill.month %><p>
+    <p>Year: <%= @bill.year %><p>
+    <p>Amount: <%= @bill.amount %><p>
+    ==================================
+
+    <%= link_to "Edit Bill", edit_card_bill_path(params[:card_id], @bill), class: "btn btn-info btn-sm" %>
+    <%= button_to "Delete Bill", [@card, @bill], method: :delete, class: "btn btn-danger btn-sm" %>
+  </div>
+</section>

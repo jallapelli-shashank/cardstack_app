@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_29_095052) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_03_075411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -26,12 +26,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_29_095052) do
   end
 
   create_table "cards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "bank"
-    t.string "card_number"
+    t.string "bank", null: false
     t.string "card_type"
     t.datetime "created_at", null: false
     t.string "expiry_month"
     t.string "expiry_year"
+    t.integer "iin", null: false
     t.string "last_four_digits"
     t.json "milestones"
     t.string "name"
