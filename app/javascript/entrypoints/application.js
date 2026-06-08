@@ -1,20 +1,16 @@
 import "@hotwired/turbo-rails"
-import "../controllers/application"
-
+import { Application } from "@hotwired/stimulus"
+import { registerControllers } from "stimulus-vite-helpers"
 import * as bootstrap from 'bootstrap'
 
-// To see this message, add the following to the `<head>` section in your
-// views/layouts/application.html.erb
-//
-//    <%= vite_client_tag %>
-//    <%= vite_javascript_tag 'application' %>
-console.log('Vite ⚡️ Rails')
+// Start the Stimulus application
+const application = Application.start()
 
-// If using a TypeScript entrypoint file:
-//     <%= vite_typescript_tag 'application' %>
-//
-// If you want to use .jsx or .tsx, add the extension:
-//     <%= vite_javascript_tag 'application.jsx' %>
+// Use Vite's glob import feature to find all files ending in _controller.js
+const controllers = import.meta.glob("../controllers/**/*_controller.js", { eager: true })
+
+// Automatically register them with their file-based identifiers
+registerControllers(application, controllers)
 
 console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify.app/guide/rails')
 

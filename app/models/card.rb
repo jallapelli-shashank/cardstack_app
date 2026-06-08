@@ -3,19 +3,20 @@ class Card < ApplicationRecord
   has_many :bills, dependent: :destroy
   enum :bank, {
     axis: "Axis",
-    hdfc: "HDFC",
-    amex: "American Express",
+    hdfc: "HDFC", 
+    american_express: "American Express",
     hsbc: "HSBC",
-    icici: "ICICI",
+    icici: "ICICI", 
     indusind: "IndusInd"
   }
 
   attr_accessor :number
 
-  before_validation :extract_card_details
+  before_validation :extract_card_details, :set_uid
 
   validates :name, :iin, :last_four_digits, :expiry_month, :expiry_year, :bank, presence: true
   validates :last_four_digits, length: { is: 4 }
+  validates :uid, uniqueness: true
   validate :number_is_valid, on: :create
 
   def total_spent
@@ -23,7 +24,6 @@ class Card < ApplicationRecord
   end
 
   def milestones_string
-    milestones.map(&:)
     milestones&.join(";") || ""
   end
 
@@ -42,6 +42,10 @@ class Card < ApplicationRecord
     self.card_type = detector.brand
     self.iin = digits.first(6).to_i
     self.last_four_digits = digits.last(4)
+  end
+
+  def set_uid
+    self.uid = "#{iin}#{last_four_digits}"
   end
 
   def number_is_valid

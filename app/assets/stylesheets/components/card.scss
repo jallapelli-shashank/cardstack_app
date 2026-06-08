@@ -1,0 +1,107 @@
+.cs--card-wrapper {
+  .milestones-progress {
+    top: -50px;
+    font-size: 12px;
+  }
+  .progress-bar {
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0, 0.5);
+    border-radius: 20px;
+    height: 10px;
+    margin: 5px 0 20px;
+    padding: 2px;
+    .progress {
+      border-radius: 20px;
+      height: 8px;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+    }
+  }
+  .milestone {
+    padding: 0px 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  .cs--card {
+    position: relative;
+    width: 350px;
+    height: 222px;
+    filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, 0.4));
+    border-radius: 20px;
+    background-size: cover !important;
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-out;
+    user-select: none;
+
+    &>div {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+
+      &.cs--card-name {
+        p {
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+      }
+
+      &.cs--card-number {
+        align-items: center;
+      }
+
+      &.cs--card-footer {
+        justify-content: space-between;
+        align-items: flex-end;
+        img {
+          max-width: 100%;
+          &.logo--diners {
+            width: 90px;
+          }
+          &.logo--visa {
+            width: 60px;
+          }
+          &.logo--amex {
+            width: 25px;
+          }
+        }
+      }
+    }
+
+    &[data-card="axis"] {
+      background: url("../../images/axis.svg") no-repeat center;
+    }
+
+    &[data-card="american_express"] {
+      background: url("../../images/american_express.svg") no-repeat center;
+    }
+
+    &[data-card="hdfc"] {
+      background: url("../../images/hdfc.svg") no-repeat center;
+    }
+
+    &[data-card="icici"] {
+      background: url("../../images/icici.svg") no-repeat center;
+    }
+
+    &[data-card="hsbc"] {
+      background: url("../../images/hsbc.svg") no-repeat center;
+    }
+
+    &[data-card="indusind"] {
+      background: url("../../images/indusind.svg") no-repeat center;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  .text-muted {
+    font-size: 13px;
+  }
+  a {
+    text-underline-offset: 4px;
+  }
+}

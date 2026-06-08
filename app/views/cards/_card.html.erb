@@ -1,7 +1,29 @@
-===========================
-<h2><%= card[:name] %></h2>
-<p><%= card[:card_number] %><p>
-<p><%= card[:card_type] %><p>
-<p>Total Spent: <%= card.total_spent %><p>
-<%= link_to "View card", card_path(card), class: "btn btn-info btn-sm" %>
-===========================
+<div class="cs--card-wrapper position-relative">
+  <% unless card[:milestones].length == 0 %>
+    <% percent = (card.total_spent/card[:milestones][card[:milestones].length - 1]) * 100 %>
+    <div class="milestones-progress position-absolute w-100 left-0">
+      <div class="milestones-wrapper d-flex justify-content-between">
+        <div class="milestone" data-milestone="0">0</div>
+        <% card[:milestones].each do |milestone| %>
+          <div class="milestone" 
+            data-milestone="<%= milestone %>" 
+            data-cards-target="milestone" 
+            data-milestone-diff="<%= milestone - card.total_spent %>"></div>
+        <% end %>
+      </div>
+      <div class="progress-bar"><div class="progress" style="width: <%= percent %>%;"></div></div>
+    </div>
+  <% end %>
+  <div class="cs--card" data-card="<%= card[:bank] %>">
+    <div class="cs--card-name"><p class="m-0 fw-medium text-white"><%= card[:name] %><p></div>
+    <div class="cs--card-number text-white">XXXX-XXXX-XXXX-<%= card[:last_four_digits]%></div>
+    <div class="cs--card-footer">
+      <p class="text-white m-0">Shashank Jallapelli</p>
+      <%= image_tag "#{card[:card_type]}.svg", class: "logo--#{card[:card_type]}", alt: "VISA" %>
+    </div>
+  </div>
+  <div class="mt-3 d-flex justify-content-between px-3">
+    <p class="total-spent text-muted" data-cards-target="totalSpent" data-total-spent="<%= card.total_spent %>"></p>
+    <%= link_to "View details", card_path(card), class: "text-muted" %>
+  </div>
+</div>

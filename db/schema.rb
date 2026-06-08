@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_075411) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_03_162750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -32,9 +32,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_075411) do
     t.string "expiry_month"
     t.string "expiry_year"
     t.integer "iin", null: false
-    t.string "last_four_digits"
+    t.integer "last_four_digits", null: false
     t.json "milestones"
     t.string "name"
+    t.string "uid", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"

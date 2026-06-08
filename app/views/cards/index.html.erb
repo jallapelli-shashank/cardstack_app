@@ -1,7 +1,16 @@
 <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-<section>
+<section data-controller="cards">
   <div class="container">
-    <h1>Cards</h1>
-    <%= render partial: "card", collection: @cards if @cards.length %>  
+    <div class="pt-3 d-flex justify-content-end align-items-center">
+      <%= link_to "Add new card", new_card_path, class: "btn btn-primary btn-sm m-0" %>
+    </div>
+    <hr/>
+    <div class="row mt-4">
+      <div class="col-12 mx-auto">
+        <div class="cards-wrapper d-flex flex-wrap mx-auto py-3" style="max-width: 1146px;">
+          <%= render partial: "card", collection: @cards if @cards.length %>
+        </div>  
+      </div>
+    </div>
   </div>
 </section>
